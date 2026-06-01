@@ -1,0 +1,184 @@
+```
+<link rel="stylesheet" href="style.css">
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const text = [
+            "Digital Creator",
+            "Video Editor",
+            "AI Thumbnail Designer",
+            "Entrepreneur",
+            "Future Brand Builder"
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typingElement = document.getElementById("typing");
+
+        function typeEffect() {
+
+            const currentText = text[textIndex];
+
+            if (!deleting) {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+
+                if (charIndex === currentText.length) {
+                    deleting = true;
+                    setTimeout(typeEffect, 1500);
+                    return;
+                }
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+
+                if (charIndex === 0) {
+                    deleting = false;
+                    textIndex = (textIndex + 1) % text.length;
+                }
+            }
+
+            setTimeout(typeEffect, deleting ? 60 : 100);
+        }
+
+        typeEffect();
+
+        const quotes = [
+            "Discipline beats motivation.",
+            "Small actions create big results.",
+            "Build skills before chasing success.",
+            "Consistency compounds over time.",
+            "Your future is built today.",
+            "Focus on progress, not perfection.",
+            "Create more than you consume.",
+            "Every expert was once a beginner."
+        ];
+
+        window.newQuote = function () {
+            const quote =
+                quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById("quote").textContent = quote;
+        };
+    });
+</script>
+```
+
+```
+    <div class="logo">
+        MAJID KHAN
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+</nav>
+```
+
+```
+<div class="hero-content">
+
+    <img src="profile.jpg"
+         alt="Majid Khan"
+         class="profile-image">
+
+    <div class="badge">
+        Premium Personal Portfolio
+    </div>
+
+    <h1>
+        Majid Khan
+    </h1>
+
+    <h2 id="typing">
+        Digital Creator
+    </h2>
+
+    <p class="hero-text">
+        Creative digital creator passionate about entrepreneurship,
+        technology, branding, content creation, and building
+        innovative projects for the future.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="about.html" class="btn-primary">
+            Explore My Journey
+        </a>
+
+        <a href="skills.html" class="btn-secondary">
+            View Skills
+        </a>
+    </div>
+
+</div>
+```
+
+```
+<div class="section-card">
+
+    <h3>
+        Current Focus
+    </h3>
+
+    <p>
+        Developing skills in video editing, AI-assisted design,
+        branding, web technology, and entrepreneurship while
+        completing my education.
+    </p>
+
+</div>
+
+<div class="section-card">
+
+    <h3>
+        Future Vision
+    </h3>
+
+    <p>
+        Building digital brands, creative projects,
+        and a clothing brand currently in its pre-launch phase.
+    </p>
+
+</div>
+```
+
+```
+<h3>
+    Daily Motivation
+</h3>
+
+<div id="quote" class="quote-box">
+    Discipline beats motivation.
+</div>
+
+<button onclick="newQuote()" class="quote-button">
+    Generate Motivation
+</button>
+```
+
+```
+<div class="status-card">
+
+    <h3>
+        Website Status
+    </h3>
+
+    <p>
+        This portfolio is actively evolving with new content,
+        projects, skills, and future updates.
+    </p>
+
+</div>
+```
+
+```
+<p>
+    © 2026 Majid Khan
+</p>
+```
