@@ -1,10 +1,24 @@
-
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majid Khan | Digital Creator</title><link rel="stylesheet" href="style.css">
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", () => {
 
-        const text = [
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        });
+
+        document.querySelectorAll(".hidden").forEach((el) => {
+            observer.observe(el);
+        });
+
+        const words = [
             "Digital Creator",
             "Video Editor",
             "AI Thumbnail Designer",
@@ -12,173 +26,326 @@
             "Future Brand Builder"
         ];
 
-        let textIndex = 0;
+        let wordIndex = 0;
         let charIndex = 0;
         let deleting = false;
 
-        const typingElement = document.getElementById("typing");
+        const typing = document.getElementById("typing");
 
         function typeEffect() {
 
-            const currentText = text[textIndex];
+            const current = words[wordIndex];
 
             if (!deleting) {
-                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                typing.textContent = current.substring(0, charIndex + 1);
                 charIndex++;
 
-                if (charIndex === currentText.length) {
+                if (charIndex === current.length) {
                     deleting = true;
                     setTimeout(typeEffect, 1500);
                     return;
                 }
             } else {
-                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                typing.textContent = current.substring(0, charIndex - 1);
                 charIndex--;
 
                 if (charIndex === 0) {
                     deleting = false;
-                    textIndex = (textIndex + 1) % text.length;
+                    wordIndex = (wordIndex + 1) % words.length;
                 }
             }
 
             setTimeout(typeEffect, deleting ? 60 : 100);
         }
 
-        typeEffect();
+        setTimeout(typeEffect, 500);
 
-        const quotes = [
-            "Discipline beats motivation.",
-            "Small actions create big results.",
-            "Build skills before chasing success.",
-            "Consistency compounds over time.",
-            "Your future is built today.",
-            "Focus on progress, not perfection.",
-            "Create more than you consume.",
-            "Every expert was once a beginner."
-        ];
-
-        window.newQuote = function () {
-            const quote =
-                quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById("quote").textContent = quote;
-        };
     });
 </script>
-```
 
-```
-    <div class="logo">
-        MAJID KHAN
+</head><body><header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MK
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="skills.html">Skills</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <img src="profile.jpg"
+             alt="Majid Khan"
+             class="profile-image">
+
+        <span class="hero-badge">
+            Personal Portfolio
+        </span>
+
+        <h1>
+            Majid Khan
+        </h1>
+
+        <h2 id="typing">
+            Digital Creator
+        </h2>
+
+        <p class="hero-description">
+
+            Creative student, entrepreneur, and digital creator
+            focused on technology, content creation,
+            branding, and building meaningful projects.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="about.html" class="primary-btn">
+                Explore Journey
+            </a>
+
+            <a href="skills.html" class="secondary-btn">
+                View Skills
+            </a>
+
+        </div>
+
+        <div class="scroll-indicator">
+            Scroll ↓
+        </div>
+
     </div>
 
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="skills.html">Skills</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
+</section>
 
-</nav>
-```
+<section class="feature-section hidden">
 
-```
-<div class="hero-content">
+    <div class="section-container">
 
-    <img src="profile.jpg"
-         alt="Majid Khan"
-         class="profile-image">
+        <h2>
+            Current Focus
+        </h2>
 
-    <div class="badge">
-        Premium Personal Portfolio
+        <p>
+
+            Learning advanced video editing,
+            AI-powered design, branding,
+            web technology, and entrepreneurship
+            while continuously improving my creative skills.
+
+        </p>
+
     </div>
 
-    <h1>
-        Majid Khan
-    </h1>
+</section>
 
-    <h2 id="typing">
-        Digital Creator
-    </h2>
+<section class="feature-section hidden">
 
-    <p class="hero-text">
-        Creative digital creator passionate about entrepreneurship,
-        technology, branding, content creation, and building
-        innovative projects for the future.
-    </p>
+    <div class="section-container">
 
-    <div class="hero-buttons">
-        <a href="about.html" class="btn-primary">
-            Explore My Journey
-        </a>
+        <h2>
+            Building For The Future
+        </h2>
 
-        <a href="skills.html" class="btn-secondary">
-            View Skills
-        </a>
+        <p>
+
+            My goal is to create projects,
+            brands, and digital experiences
+            that combine creativity,
+            innovation, and long-term vision.
+
+        </p>
+
     </div>
 
-</div>
-```
+</section>
 
-```
-<div class="section-card">
+<section class="cards-section hidden">
 
-    <h3>
-        Current Focus
-    </h3>
+    <div class="card">
+        <h3>Video Editing</h3>
 
-    <p>
-        Developing skills in video editing, AI-assisted design,
-        branding, web technology, and entrepreneurship while
-        completing my education.
-    </p>
+        <p>
+            Creating engaging content with
+            storytelling, pacing, and audience retention.
+        </p>
+    </div>
 
-</div>
+    <div class="card">
+        <h3>AI Design</h3>
 
-<div class="section-card">
+        <p>
+            Using modern AI tools to create
+            professional visual content and thumbnails.
+        </p>
+    </div>
 
-    <h3>
-        Future Vision
-    </h3>
+    <div class="card">
+        <h3>Entrepreneurship</h3>
 
-    <p>
-        Building digital brands, creative projects,
-        and a clothing brand currently in its pre-launch phase.
-    </p>
+        <p>
+            Exploring branding,
+            business development,
+            and future opportunities.
+        </p>
+    </div>
 
-</div>
-```
+</section>
 
-```
-<h3>
-    Daily Motivation
-</h3>
+<!-- PART 1 ENDS HERE -->
+    <section class="motivation-section hidden">    <div class="section-container">
 
-<div id="quote" class="quote-box">
-    Discipline beats motivation.
-</div>
+        <h2>
+            Daily Motivation
+        </h2>
 
-<button onclick="newQuote()" class="quote-button">
-    Generate Motivation
-</button>
-```
+        <p id="quote">
 
-```
-<div class="status-card">
+            Success comes from consistent effort,
+            not occasional motivation.
 
-    <h3>
-        Website Status
-    </h3>
+        </p>
 
-    <p>
-        This portfolio is actively evolving with new content,
-        projects, skills, and future updates.
-    </p>
+        <button onclick="generateQuote()" class="primary-btn">
+            New Motivation
+        </button>
 
-</div>
-```
+    </div>
 
-```
-<p>
-    © 2026 Majid Khan
-</p>
-```
+</section>
+
+<script>
+
+    const quotes = [
+
+        "Success comes from consistent effort, not occasional motivation.",
+
+        "Your future is built by what you do today.",
+
+        "Discipline creates freedom.",
+
+        "Progress beats perfection.",
+
+        "Stay focused on the process.",
+
+        "Every skill starts with a beginner.",
+
+        "Small improvements create massive results.",
+
+        "Create more than you consume."
+
+    ];
+
+    function generateQuote() {
+
+        const random =
+            quotes[Math.floor(Math.random() * quotes.length)];
+
+        document.getElementById("quote").innerText = random;
+    }
+
+</script>
+
+<section class="journey-section hidden">
+
+    <div class="section-container">
+
+        <h2>
+            My Journey
+        </h2>
+
+        <p>
+
+            Currently pursuing Intermediate in Computer Science
+            while developing skills in content creation,
+            branding, technology, and entrepreneurship.
+
+        </p>
+
+    </div>
+
+</section>
+
+<section class="future-section hidden">
+
+    <div class="section-container">
+
+        <h2>
+            What's Next?
+        </h2>
+
+        <p>
+
+            Expanding creative projects,
+            improving technical expertise,
+            building brands,
+            and launching future ventures.
+
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="footer-content">
+
+        <h3>
+            Majid Khan
+        </h3>
+
+        <p>
+            Creator • Entrepreneur • Builder
+        </p>
+
+        <div class="footer-links">
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="skills.html">
+                Skills
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 Majid Khan. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+</body></html>
